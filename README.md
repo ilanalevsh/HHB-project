@@ -27,7 +27,7 @@ Izveidot mūsdienīgu platformu ar:
 - backend/ – servera daļa
 - database/ – datu bāzes faili
 - docs/ – dokumentācija
-- design/ – dizaina materiāli
+- project-design/ – dizaina materiāli
 
 ## Autors
 
