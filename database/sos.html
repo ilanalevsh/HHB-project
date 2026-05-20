@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>SOS pārvadājums</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+<header class="top-bar">
+    <a href="map.html" class="back">←</a>
+    <div></div>
+    <div>🔔</div>
+</header>
+
+<main class="sos-page">
+
+    <section id="confirmBox" class="sos-card">
+        <div class="circle-icon">📞</div>
+
+        <h1>SOS PĀRVADĀJUMA IZSAUKUMS</h1>
+
+        <p>Vai tiešām vēlaties apstiprināt izvēlēto pakalpojumu?</p>
+
+        <button onclick="showSosForm()" class="yellow-btn">Jā, apstiprinu</button>
+        <button onclick="location.href='map.html'" class="dark-btn">Nē, atcelt</button>
+    </section>
+
+    <section id="sosForm" class="sos-card hidden">
+        <div class="circle-icon">📞</div>
+
+        <h1>SOS PĀRVADĀJUMA IZSAUKUMS</h1>
+
+        <label>Jūsu atrašanās vieta</label>
+        <input placeholder="Ievadīt adresi...">
+
+        <label>Īss notikumu apraksts</label>
+        <input placeholder="Lai informētu pārvadātājus par...">
+
+        <button onclick="showSuccess()" class="yellow-btn">Nosūtīt</button>
+        <button onclick="location.href='map.html'" class="dark-btn">Atcelt SOS izsaukumi</button>
+    </section>
+
+    <section id="successBox" class="sos-card hidden">
+        <div class="circle-icon">✓</div>
+
+        <h1>Paldies!<br>Jūsu pieteikums ir iesniegts.</h1>
+
+        <p><u>5 minūšu laikā</u> gaidiet ziņu no pārvadātāja, kurš būs gatavs Jums palīdzēt.</p>
+
+        <button onclick="location.href='index.html'" class="yellow-btn">
+            Atgriezties sākumlapā
+        </button>
+
+        <button onclick="location.href='map.html'" class="dark-btn">
+            Atcelt SOS izsaukmi
+        </button>
+    </section>
+
+</main>
+
+<nav class="bottom-nav">
+    <a href="index.html">🏠<br>Mājas</a>
+    <a class="active" href="drivers.html">👥<br>Pārvadātāji</a>
+    <a href="map.html">📍<br>Karte</a>
+    <a href="#">🛍️<br>Marketplace</a>
+    <a href="profile.html">👤<br>Profils</a>
+</nav>
+
+<script>
+    function showSosForm() {
+        document.getElementById("confirmBox").classList.add("hidden");
+        document.getElementById("sosForm").classList.remove("hidden");
+    }
+
+    function showSuccess() {
+        document.getElementById("sosForm").classList.add("hidden");
+        document.getElementById("successBox").classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>
