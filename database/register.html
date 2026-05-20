@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>HHB Reģistrācija</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body class="yellow-page">
+
+<a href="profile.html" class="back">←</a>
+
+<div class="logo">HHB<br><span>Horse Haulers Baltic</span></div>
+
+<h1 class="page-title">Profila izveide</h1>
+
+<form class="form-card" onsubmit="registerUser(event)">
+
+    <label class="image-upload">
+        <input type="file" id="profileImage" accept="image/*" hidden>
+        <div id="imagePreview">🖼️<br>Pievienot attēlu</div>
+    </label>
+
+    <label>Vārds, uzvārds<span>*</span></label>
+    <input type="text" id="name" required>
+
+    <label>E-pasts</label>
+    <input type="email" id="email" placeholder="mail@mail.com" required>
+
+    <label>Tālruņa numurs<span>*</span></label>
+    <input type="tel" id="phone" placeholder="+371" required>
+
+    <label>Dzimšanas datums</label>
+    <div class="date-row">
+        <input type="text" placeholder="Diena">
+        <input type="text" placeholder="Mēnesis">
+        <input type="text" placeholder="Gads">
+    </div>
+
+    <label>Izdomājiet paroli<span>*</span></label>
+    <input type="password" id="password" required>
+
+    <div class="checkboxes">
+        <label><input type="checkbox" required> Piekrītu datu apstrādes politikai *</label>
+        <label><input type="checkbox" required> Piekrītu lietotāja līgumam *</label>
+        <label><input type="checkbox"> Piekrišana saņemt jaunumus</label>
+        <label><input type="checkbox"> Atceries mani</label>
+    </div>
+
+    <p class="note">* - obligātu lauku uzīmēšana</p>
+
+    <button class="black-btn" type="submit">Reģistrēties</button>
+
+</form>
+
+<script>
+    const imageInput = document.getElementById("profileImage");
+    const imagePreview = document.getElementById("imagePreview");
+
+    imageInput.addEventListener("change", function () {
+        const file = imageInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                imagePreview.innerHTML = `<img src="${reader.result}" alt="Profila attēls">`;
+                localStorage.setItem("profileImage", reader.result);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function registerUser(event) {
+        event.preventDefault();
+
+        const user = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            password: document.getElementById("password").value
+        };
+
+        localStorage.setItem("hhbUser", JSON.stringify(user));
+
+        alert("Profils veiksmīgi izveidots!");
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

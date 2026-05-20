@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9ad00;
+    color: black;
+}
+
+.profile-start {
+    min-height: 100vh;
+    background-color: #f9ad00;
+}
+.hero {
+    position: relative;
+
+    height: 420px;
+
+    background:
+        radial-gradient(circle at top left, #ffd54f 0%, transparent 40%),
+        radial-gradient(circle at top right, #ffb300 0%, transparent 35%),
+        linear-gradient(180deg, #ffc107 0%, #ff9800 100%);
+
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+
+    overflow: hidden;
+}
+.content {
+    padding: 30px 35px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 21px;
+    font-weight: 900;
+    margin-bottom: 28px;
+}
+
+.main-btn,
+.social-btn {
+    width: 250px;
+    height: 52px;
+    border-radius: 30px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1.5px solid black;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.main-btn {
+    background: black;
+    color: white;
+}
+
+.social-btn {
+    background: white;
+    color: black;
+}
+
+.google {
+    color: #4285f4;
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.facebook {
+    color: #1877f2;
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.login-text {
+    font-size: 12px;
+}
+
+.login-text a {
+    color: black;
+    font-weight: bold;
+}
+
+.yellow-page {
+    padding: 20px 28px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.back {
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 24px;
+}
+
+.logo span {
+    font-size: 12px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 30px;
+    margin: 22px 0;
+}
+
+.form-card,
+.login-card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+label {
+    font-weight: 800;
+    display: block;
+    margin-top: 10px;
+}
+
+label span {
+    color: red;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid black;
+    border-radius: 9px;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.image-upload {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    text-align: center;
+    overflow: hidden;
+}
+
+.image-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.date-row {
+    display: flex;
+    gap: 12px;
+}
+
+.checkboxes {
+    margin-top: 14px;
+    font-size: 12px;
+}
+
+.checkboxes label {
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.checkboxes input {
+    width: auto;
+}
+
+.note {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.black-btn {
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 205px;
+    display: block;
+    margin: 28px auto 0;
+    font-size: 16px;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card {
+    margin-top: 250px;
+}
+
+.login-card h1 {
+    text-align: center;
+    font-size: 28px;
+}
+
+.remember {
+    text-align: center;
+    font-weight: normal;
+}
+
+.remember input {
+    width: auto;
+}
+.hero-back {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    background: rgba(255,255,255,0.9);
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: black;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    backdrop-filter: blur(4px);
+}

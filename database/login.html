@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>HHB Login</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body class="yellow-page login-page">
+
+<a href="profile.html" class="back">←</a>
+
+<div class="logo">HHB<br><span>Horse Haulers Baltic</span></div>
+
+<form class="login-card" onsubmit="loginUser(event)">
+
+    <h1>Ieiet savā profilā</h1>
+
+    <label>E-pasts</label>
+    <input type="email" id="loginEmail" placeholder="example@gmail.com" required>
+
+    <label>Parole</label>
+    <input type="password" id="loginPassword" placeholder="********" required>
+
+    <label class="remember">
+        <input type="checkbox"> Atcerēties mani
+    </label>
+
+    <p>Problēmas ar ieeju? <b>Atjaunināt paroli</b></p>
+
+    <button class="black-btn" type="submit">Turpināt →</button>
+
+</form>
+
+<script>
+    function loginUser(event) {
+        event.preventDefault();
+
+        const savedUser = JSON.parse(localStorage.getItem("hhbUser"));
+
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (!savedUser) {
+            alert("Profils vēl nav izveidots!");
+            return;
+        }
+
+        if (email === savedUser.email && password === savedUser.password) {
+            alert("Veiksmīga pieslēgšanās!");
+            window.location.href = "index.html";
+        } else {
+            alert("Nepareizs e-pasts vai parole!");
+        }
+    }
+</script>
+
+</body>
+</html>

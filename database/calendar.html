@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHB kalendārs</title>
+    <link rel="stylesheet" href="calendar.css">
+</head>
+
+<body>
+
+<header class="top-bar">
+    <a href="index.html" class="back-btn">‹</a>
+    <div class="logo">HHB</div>
+    <div class="bell">🔔</div>
+</header>
+
+<main class="container">
+
+    <div class="title-row">
+        <h1>Notikumu kalendārs</h1>
+    <a href="create-event.html" class="add-btn">+</a>
+    </div>
+
+    <section class="calendar-box">
+        <div class="calendar-card">
+
+            <div class="calendar-header">
+                <button onclick="changeMonth(-1)">‹</button>
+                <h2 id="monthYear"></h2>
+                <button onclick="changeMonth(1)">›</button>
+            </div>
+
+            <div class="weekdays">
+                <span>P</span>
+                <span>O</span>
+                <span>T</span>
+                <span>C</span>
+                <span>P</span>
+                <span>S</span>
+                <span>Sv</span>
+            </div>
+
+            <div id="calendarDays" class="calendar-days"></div>
+
+        </div>
+    </section>
+
+    <section class="events-card">
+        <h2>Turpmākie pasākumi</h2>
+
+        <div class="event-box">
+            <div class="event-content">
+                <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=300" alt="Zirgs">
+
+                <div>
+                    <h3>Pavasara sezonas noslēgums – iejādes sacensības</h3>
+                    <p>📍 Kleistu sporta skola</p>
+                    <span>26.05.26</span>
+                </div>
+            </div>
+
+            <button class="white-btn">Reģistrējiet savu dalību</button>
+            <button class="gray-btn">Atvērt aprakstu</button>
+        </div>
+    </section>
+
+</main>
+
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-item active">
+        <div>🏠</div>
+        Mājas
+    </a>
+
+    <div class="nav-item">
+        <div>👥</div>
+        Pārvadātāji
+    </div>
+
+    <div class="nav-item">
+        <div>📍</div>
+        Karte
+    </div>
+
+    <div class="nav-item">
+        <div>🛍️</div>
+        Marketplace
+    </div>
+
+    <div class="nav-item">
+        <div>👤</div>
+        Profils
+    </div>
+</nav>
+
+<script>
+    const monthNames = [
+        "Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs",
+        "Jūlijs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"
+    ];
+
+    let currentDate = new Date();
+
+    function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        document.getElementById("monthYear").textContent =
+            `${monthNames[month]} ${year}`;
+
+        const daysContainer = document.getElementById("calendarDays");
+        daysContainer.innerHTML = "";
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        let startDay = firstDay === 0 ? 6 : firstDay - 1;
+
+        for (let i = 0; i < startDay; i++) {
+            const emptyCell = document.createElement("div");
+            daysContainer.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement("div");
+            dayCell.textContent = day;
+
+            const today = new Date();
+
+            if (
+                day === today.getDate() &&
+                month === today.getMonth() &&
+                year === today.getFullYear()
+            ) {
+                dayCell.classList.add("today");
+            }
+
+            if (day === 10 || day === 24) {
+                dayCell.classList.add("event-day");
+            }
+
+            daysContainer.appendChild(dayCell);
+        }
+    }
+
+    function changeMonth(direction) {
+        currentDate.setMonth(currentDate.getMonth() + direction);
+        renderCalendar();
+    }
+
+    renderCalendar();
+</script>
+
+</body>
+</html>
