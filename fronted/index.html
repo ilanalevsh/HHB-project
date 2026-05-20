@@ -1,1 +1,305 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HHB sākumlapa</title>
 
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #eeeeee;
+            color: #000;
+        }
+
+        .top-bar {
+            height: 60px;
+            background-color: #f9ad00;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+
+        .top-icon {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 16px;
+            padding-bottom: 90px;
+        }
+
+        .search {
+            background-color: #e3e3e3;
+            border-radius: 10px;
+            padding: 14px;
+            color: #9a9a9a;
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0 0 16px;
+        }
+
+        .edit-btn {
+            background-color: #d5d5d5;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 28px;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            height: 115px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .driver-banner {
+            margin-top: 20px;
+            background-color: #ffd978;
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .driver-icon {
+            font-size: 48px;
+        }
+
+        .driver-banner h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .driver-banner p {
+            margin: 4px 0 0;
+            font-size: 13px;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 14px;
+        }
+
+        .event-content {
+            display: flex;
+            gap: 14px;
+        }
+
+        .event-img {
+            width: 90px;
+            height: 75px;
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #cccccc;
+        }
+
+        .event-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .event-info p {
+            margin: 8px 0;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .event-date {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .event-buttons {
+            margin-top: 14px;
+        }
+
+        .yellow-btn,
+        .gray-btn {
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .yellow-btn {
+            background-color: #ffd978;
+        }
+
+        .gray-btn {
+            background-color: #cfcfcf;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #ddd;
+        }
+
+        .nav-item {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .active {
+            background-color: #ffe28a;
+            border-radius: 10px;
+            padding: 6px 12px;
+        }
+
+        .logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    font-family: "Gilroy", Arial, sans-serif;
+}
+    </style>
+</head>
+
+<body>
+
+    <header class="top-bar">
+
+    <div class="top-icon">🆘</div>
+
+    <div class="logo">
+        HHB
+    </div>
+
+    <div class="top-icon">🔔</div>
+
+</header>
+
+    <main class="container">
+
+        <div class="search">🔍 Meklēt</div>
+
+        <div class="section-header">
+            <h1>Ātra piekļuve</h1>
+            <button class="edit-btn">Rediģēt</button>
+        </div>
+
+        <section class="quick-grid">
+            <div class="card">
+                <div class="card-icon">🆘</div>
+                <div>SOS zvans</div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚐</div>
+                <div>Ieplānot<br>braucienu</div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🗓️</div>
+                <div>Pasākumu<br>kalendārs</div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🐎</div>
+                <div>Mans zirgs un<br>dokumenti</div>
+            </div>
+        </section>
+
+        <section class="driver-banner">
+            <div class="driver-icon">🙋</div>
+            <div>
+                <h2>Kļūt par HHB pārvadātāju!</h2>
+                <p><b>Pievienojieties mūsu pārvadātāju datubāzei!</b><br>
+                – meklējiet klientus, saņemiet pasūtījumus</p>
+            </div>
+        </section>
+
+        <h1 style="margin-top: 24px;">Tuvākie notikumi</h1>
+
+        <section class="event-card">
+            <div class="event-content">
+                <img class="event-img" src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=300" alt="Zirgs">
+
+                <div class="event-info">
+                    <h3>Ziemassvētku kontroltreniņš konkurā</h3>
+                    <p>📍Kleistu sporta skola</p>
+                    <span class="event-date">28.12.25</span>
+                </div>
+            </div>
+
+            <div class="event-buttons">
+                <button class="yellow-btn">Reģistrēt piedalīšanos</button>
+                <button class="gray-btn">Atvērt aprakstu</button>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            Mājas
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon">👥</div>
+            Pārvadātāji
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon">📍</div>
+            Karte
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon">🛍️</div>
+            Marketplace
+        </div>
+
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            Profils
+        </div>
+    </nav>
+
+</body>
+</html>
