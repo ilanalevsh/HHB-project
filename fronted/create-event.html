@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izveidot pasākumu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eeeeee;
+            color: #000;
+        }
+
+        .page {
+            max-width: 400px;
+            margin: auto;
+            background: #eeeeee;
+            min-height: 100vh;
+        }
+
+        .top-bar {
+            height: 62px;
+            background: #f9ad00;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 18px;
+        }
+
+        .back {
+            font-size: 34px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .bell {
+            font-size: 24px;
+        }
+
+        .form-wrapper {
+            height: calc(100vh - 62px);
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+
+        .form-section {
+            min-height: calc(100vh - 62px);
+            padding: 18px 16px;
+            box-sizing: border-box;
+            scroll-snap-align: start;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 10px 0 16px;
+        }
+
+        label {
+            font-weight: 800;
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 6px;
+        }
+
+        .required {
+            color: red;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1.5px solid #000;
+            border-radius: 10px;
+            padding: 11px;
+            font-size: 15px;
+            background: white;
+        }
+
+        textarea {
+            height: 95px;
+            resize: none;
+        }
+
+        .image-upload {
+            height: 250px;
+            border: 1.5px solid #000;
+            border-radius: 10px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .image-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-text {
+            color: #777;
+        }
+
+        .upload-icon {
+            font-size: 60px;
+            color: #888;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .price-row input {
+            width: 100px;
+        }
+
+        .euro {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .document-box {
+            margin-top: 14px;
+            border: 1.5px solid #000;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            border-radius: 9px;
+            padding: 12px;
+            margin-top: 14px;
+            font-size: 16px;
+        }
+
+        .dark-btn {
+            background: #4a4a4a;
+            color: white;
+        }
+
+        .yellow-btn {
+            background: #f9ad00;
+            color: black;
+        }
+
+        .calendar-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calendar-header button {
+            border: none;
+            background: none;
+            font-size: 26px;
+        }
+
+        .weekdays,
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+
+        .weekdays {
+            margin-top: 22px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .days {
+            margin-top: 18px;
+            gap: 12px 0;
+        }
+
+        .day {
+            padding: 8px 0;
+            border-radius: 50%;
+        }
+
+        .selected {
+            background: #f9ad00;
+        }
+
+        .event-type {
+            margin-top: 18px;
+            background: #ddd;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .type-row {
+            padding: 5px;
+            border-bottom: 1px solid #bbb;
+        }
+
+        .modal-bg {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .modal {
+            background: white;
+            width: 280px;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 16px;
+            top: 10px;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .check {
+            width: 58px;
+            height: 58px;
+            border: 3px solid #35b943;
+            border-radius: 50%;
+            color: #35b943;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 34px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="top-bar">
+        <a href="calendar.html" class="back">‹</a>
+        <div class="logo">HHB</div>
+        <div class="bell">🔔</div>
+    </header>
+
+    <div class="form-wrapper">
+
+        <section class="form-section">
+
+            <label class="image-upload">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <div id="uploadContent">
+                    <div class="upload-icon">🖼️</div>
+                    <b>Pievienot pasākuma baneri</b>
+                    <p class="upload-text">
+                        Atlasiet attēlus no savas ierīces<br>
+                        fotoattēlu bibliotēkas.
+                    </p>
+                </div>
+            </label>
+
+            <label>Nosaukums<span class="required">*</span></label>
+            <input type="text">
+
+            <label>Autors / organizatori<span class="required">*</span></label>
+            <input type="text">
+
+            <label>Norises vieta<span class="required">*</span></label>
+            <input type="text" placeholder="🔍 Meklēt">
+
+            <label>Dalības maksa<span class="required">*</span></label>
+            <div class="price-row">
+                <input type="text">
+                <span class="euro">€</span>
+            </div>
+
+            <label>Notikuma apraksts<span class="required">*</span></label>
+            <textarea placeholder="Lūdzu, sniedziet svarīgu informāciju par pasākumu"></textarea>
+
+            <div class="document-box">
+                📄
+                <span>Augšupielādējiet dokumentu, kurā aprakstīts pasākums, un tas būs pieejams lietotājiem lejupielādei.</span>
+            </div>
+
+            <button class="btn dark-btn" onclick="scrollToSecond()">Turpināt</button>
+
+        </section>
+
+        <section class="form-section" id="secondSection">
+
+            <label>Pasākuma norises datums<span class="required">*</span></label>
+
+            <div class="calendar-card">
+                <div class="calendar-header">
+                    <button onclick="changeMonth(-1)">‹</button>
+                    <h3 id="monthTitle"></h3>
+                    <button onclick="changeMonth(1)">›</button>
+                </div>
+
+                <div class="weekdays">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+
+                <div class="days" id="days"></div>
+            </div>
+
+            <label>Notikuma apzīmējumu izvēle<span class="required">*</span></label>
+
+            <div class="event-type">
+                <div>Atlasiet notikuma ikonu, kas būs redzama citiem lietotājiem.</div>
+                <div class="type-row">🏅 - sacensības</div>
+                <div class="type-row">✚ - vakcinācijas, medicīniski pasākumi</div>
+            </div>
+
+            <button class="btn dark-btn" onclick="showModal()">Saglabāt melnrakstu</button>
+            <button class="btn yellow-btn">Turpināt</button>
+
+        </section>
+
+    </div>
+</div>
+
+<div class="modal-bg" id="modal">
+    <div class="modal">
+        <div class="close" onclick="closeModal()">×</div>
+        <div class="check">✓</div>
+        <h2>Paldies!</h2>
+        <p>Melnraksts ir saglabāts.</p>
+        <button class="btn dark-btn" onclick="closeModal()">Labi</button>
+    </div>
+</div>
+
+<script>
+    const imageInput = document.getElementById("imageInput");
+    const uploadContent = document.getElementById("uploadContent");
+
+    imageInput.addEventListener("change", function () {
+        const file = imageInput.files[0];
+
+        if (file) {
+            const image = document.createElement("img");
+            image.src = URL.createObjectURL(file);
+
+            uploadContent.innerHTML = "";
+            uploadContent.appendChild(image);
+        }
+    });
+
+    function scrollToSecond() {
+        document.getElementById("secondSection").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    function showModal() {
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    const monthNames = [
+        "Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs",
+        "Jūlijs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"
+    ];
+
+    let calendarDate = new Date();
+
+    function renderCalendar() {
+        const year = calendarDate.getFullYear();
+        const month = calendarDate.getMonth();
+
+        document.getElementById("monthTitle").textContent =
+            monthNames[month] + " " + year;
+
+        const daysBox = document.getElementById("days");
+        daysBox.innerHTML = "";
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            daysBox.appendChild(document.createElement("div"));
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayDiv = document.createElement("div");
+            dayDiv.className = "day";
+            dayDiv.textContent = day;
+
+            if (day === new Date().getDate() &&
+                month === new Date().getMonth() &&
+                year === new Date().getFullYear()) {
+                dayDiv.classList.add("selected");
+            }
+
+            dayDiv.onclick = function () {
+                document.querySelectorAll(".day").forEach(d => d.classList.remove("selected"));
+                dayDiv.classList.add("selected");
+            };
+
+            daysBox.appendChild(dayDiv);
+        }
+    }
+
+    function changeMonth(value) {
+        calendarDate.setMonth(calendarDate.getMonth() + value);
+        renderCalendar();
+    }
+
+    renderCalendar();
+</script>
+
+</body>
+</html>
