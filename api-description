@@ -1,14 +1,14 @@
-# API apraksts
+#API apraksts
 
 Projektā paredzēta ārējo API izmantošana:
 
-## Google Maps API
+##Google Maps API
 - maršrutu plānošana;
 - atrašanās vietas noteikšana;
 - navigācija.
 
-## Google Authentication API
+##Google Authentication API
 - pieslēgšanās ar Google kontu.
 
-## Firebase
+##Firebase
 - datu glabāšana un autentifikācija.
