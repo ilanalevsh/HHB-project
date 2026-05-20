@@ -6,12 +6,12 @@
     <title>HHB sākumlapa</title>
 
     <style>
+
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #eeeeee;
-            color: #000;
-        }
+    margin: 0;
+    background-color: #eeeeee;
+    font-family: Arial, sans-serif;
+ }
 
         .top-bar {
             height: 60px;
@@ -163,38 +163,76 @@
             background-color: #cfcfcf;
         }
 
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 65px;
-            background-color: white;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 1px solid #ddd;
-        }
+.bottom-nav {
+    position: fixed;
 
-        .nav-item {
-            text-align: center;
-            font-size: 11px;
-        }
+    bottom: 0;
+    left: 50%;
 
-        .nav-icon {
-            font-size: 24px;
-        }
+    transform: translateX(-50%);
 
-        .active {
-            background-color: #ffe28a;
-            border-radius: 10px;
-            padding: 6px 12px;
-        }
+    width: 400px;
+    max-width: 100%;
 
+    height: 72px;
+
+    background-color: white;
+
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    text-decoration: none;
+    color: black;
+
+    font-size: 11px;
+
+    gap: 2px;
+}
+
+.nav-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.active,
+.active-nav {
+    background-color: #ffe28a;
+
+    padding: 6px 12px;
+
+    border-radius: 10px;
+}
         .logo {
     font-size: 28px;
     font-weight: bold;
     color: black;
     font-family: "Gilroy", Arial, sans-serif;
+}
+
+.card-link {
+    text-decoration: none;
+    color: black;
+}
+.nav-item {
+    text-decoration: none;
+    color: black;
 }
     </style>
 </head>
@@ -233,15 +271,19 @@
                 <div>Ieplānot<br>braucienu</div>
             </div>
 
-            <div class="card">
-                <div class="card-icon">🗓️</div>
-                <div>Pasākumu<br>kalendārs</div>
-            </div>
+            <a href="calendar.html" class="card-link">
+    <div class="card">
+        <div class="card-icon">🗓️</div>
+        <div>Pasākumu<br>kalendārs</div>
+    </div>
+            </a>
 
-            <div class="card">
-                <div class="card-icon">🐎</div>
-                <div>Mans zirgs un<br>dokumenti</div>
-            </div>
+            <a href="horse-profile.html" class="card-link">
+    <div class="card">
+        <div class="card-icon">🐎</div>
+        <div>Mans zirgs un<br>dokumenti</div>
+    </div>
+</a>
         </section>
 
         <section class="driver-banner">
@@ -249,7 +291,7 @@
             <div>
                 <h2>Kļūt par HHB pārvadātāju!</h2>
                 <p><b>Pievienojieties mūsu pārvadātāju datubāzei!</b><br>
-                – meklējiet klientus, saņemiet pasūtījumus</p>
+                - meklējiet klientus, saņemiet pasūtījumus</p>
             </div>
         </section>
 
@@ -274,32 +316,34 @@
 
     </main>
 
-    <nav class="bottom-nav">
-        <div class="nav-item active">
-            <div class="nav-icon">🏠</div>
-            Mājas
-        </div>
+<nav class="bottom-nav">
 
-        <div class="nav-item">
-            <div class="nav-icon">👥</div>
-            Pārvadātāji
-        </div>
+    <a href="index.html" class="nav-item active">
+        <div class="nav-icon">🏠</div>
+        Mājas
+    </a>
 
-        <div class="nav-item">
-            <div class="nav-icon">📍</div>
-            Karte
-        </div>
+    <a href="drivers.html" class="nav-item">
+        <div class="nav-icon">👥</div>
+        Pārvadātāji
+    </a>
 
-        <div class="nav-item">
-            <div class="nav-icon">🛍️</div>
-            Marketplace
-        </div>
+    <a href="map.html" class="nav-item">
+        <div class="nav-icon">📍</div>
+        Karte
+    </a>
 
-        <div class="nav-item">
-            <div class="nav-icon">👤</div>
-            Profils
-        </div>
-    </nav>
+    <a href="#" class="nav-item">
+        <div class="nav-icon">🛍️</div>
+        Marketplace
+    </a>
+
+    <a href="profile.html" class="nav-item">
+        <div class="nav-icon">👤</div>
+        Profils
+    </a>
+
+</nav>
 
 </body>
 </html>
