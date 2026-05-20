@@ -1,0 +1,28 @@
+# Datu bāzes struktūra
+
+## users
+
+| Lauks | Tips |
+|---|---|
+| id | INTEGER |
+| name | TEXT |
+| email | TEXT |
+| password | TEXT |
+
+## events
+
+| Lauks | Tips |
+|---|---|
+| id | INTEGER |
+| title | TEXT |
+| description | TEXT |
+| event_date | DATE |
+
+## transport_requests
+
+| Lauks | Tips |
+|---|---|
+| id | INTEGER |
+| user_id | INTEGER |
+| start_location | TEXT |
+| destination | TEXT |
